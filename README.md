@@ -2,30 +2,34 @@
 
 Free AI platform for creating digital products and starting online businesses with clear logical paths.
 
-## Getting Started
+## Deploy to Cloudflare Workers
 
-1. Copy the environment file:
-   ```bash
-   cp .env.local.example .env.local
-   ```
-
-2. Add your LLM API key in `.env.local` (OpenAI, Groq, OpenRouter, or any OpenAI-compatible provider).
-
-3. Install and run:
+1. Install dependencies:
    ```bash
    npm install
-   npm run dev
    ```
 
-Open [http://localhost:3000](http://localhost:3000)
+2. Authenticate Wrangler:
+   ```bash
+   npx wrangler login
+   ```
 
-## Deploy
+3. Deploy:
+   ```bash
+   npm run deploy
+   ```
 
-Push this repo to GitHub then import it on Vercel for a free public URL that works on Safari and any browser.
+4. Add environment variables in the Cloudflare dashboard (Workers → pathforge → Settings → Variables):
+   - `OPENAI_API_KEY`
+   - `OPENAI_BASE_URL`
+   - `OPENAI_MODEL`
 
-## Features
+You'll get a `*.workers.dev` URL that works on Safari and any browser.
 
-- Real LLM-powered AI Assistant (`/chat`)
-- Digital Product builder that generates structured outlines (`/create`)
-- Dashboard
-- Dark metallic aesthetic matching the PF logo
+## Local development
+
+```bash
+cp .env.local.example .env.local
+# Add your API key
+npm run dev
+```
